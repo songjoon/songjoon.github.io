@@ -1,255 +1,362 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>홍길동 | CV</title>
-  <meta name="description" content="홍길동의 이력서(CV) 예시 페이지" />
+  <title>Soi Kim | CV</title>
+  <meta name="description" content="Two-column CV sample site" />
   <style>
     :root {
-      color-scheme: light;
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: #e2e8f0;
-      --primary: #1d4ed8;
+      --paper: #efefef;
+      --text: #2e3138;
+      --muted: #5d636d;
+      --line: #b7b7b7;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      background: var(--bg);
+      background: #dedede;
       color: var(--text);
-      font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
-      line-height: 1.6;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.35;
     }
 
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 40px 20px 80px;
+    .page {
+      max-width: 980px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 56px 60px 64px;
     }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 28px;
-      margin-bottom: 16px;
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      align-items: flex-start;
+    .top {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 28px;
+      border-bottom: 2px solid var(--line);
     }
 
     h1 {
       margin: 0;
-      font-size: 2rem;
-      line-height: 1.25;
+      font-size: 66px;
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+      font-weight: 800;
     }
 
-    .title {
+    .role {
+      margin: 8px 0 0;
+      font-size: 40px;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+    }
+
+    .intro {
       margin: 6px 0 0;
-      color: var(--primary);
-      font-weight: 700;
+      color: #3f4450;
+      font-size: 28px;
+      line-height: 1.32;
+      font-weight: 500;
     }
 
-    .summary {
-      margin: 16px 0 0;
-      color: var(--muted);
+    .content {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 34px;
+      margin-top: 26px;
     }
 
-    .contact {
+    .right {
+      border-left: 2px solid var(--line);
+      padding-left: 34px;
+    }
+
+    .section {
+      margin-bottom: 34px;
+    }
+
+    .section h2 {
       margin: 0;
-      padding: 0;
-      list-style: none;
-      color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      font-weight: 800;
     }
 
-    .contact li + li { margin-top: 4px; }
-
-    h2 {
-      margin: 0 0 14px;
-      font-size: 1.2rem;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 8px;
-    }
-
-    .item + .item {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px dashed var(--line);
-    }
-
-    .item-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: baseline;
-    }
-
-    .item-title {
-      margin: 0;
-      font-size: 1.02rem;
-      font-weight: 700;
-    }
-
-    .item-meta {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    ul {
-      margin: 8px 0 0 18px;
-      padding: 0;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .section h2::after {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 4px;
+      background: #3e3e3e;
       margin-top: 10px;
+      margin-bottom: 20px;
     }
 
-    .chip {
-      padding: 6px 10px;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      color: #1e3a8a;
-      border-radius: 999px;
-      font-size: 0.88rem;
+    .label {
+      margin: 18px 0 2px;
+      font-size: 12.5px;
+      letter-spacing: 0.05em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .value {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.42;
       font-weight: 600;
     }
 
-    footer {
-      color: var(--muted);
-      font-size: 0.9rem;
-      text-align: center;
-      margin-top: 8px;
+    .skills {
+      margin: 0;
+      padding-left: 18px;
     }
 
-    @media (max-width: 640px) {
-      .container { padding: 24px 14px 48px; }
-      .card { padding: 20px; border-radius: 12px; }
-      h1 { font-size: 1.7rem; }
+    .skills li {
+      margin: 0 0 8px;
+      color: #454a53;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .company {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .company-name {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0.01em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .position {
+      margin-left: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: none;
+    }
+
+    .period {
+      margin: 0;
+      color: #666b75;
+      font-size: 15px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .work-title {
+      margin: 16px 0 2px;
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+
+    .work-desc {
+      margin: 0;
+      color: #4f5560;
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .divider {
+      height: 2px;
+      background: var(--line);
+      margin: 24px 0;
+    }
+
+    .award {
+      margin: 0 0 14px;
+      color: #4e535e;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .award strong {
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    @media (max-width: 860px) {
+      .page {
+        margin: 0;
+        min-height: 100vh;
+        padding: 28px 22px 36px;
+      }
+
+      .top,
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      .right {
+        border-left: 0;
+        border-top: 2px solid var(--line);
+        padding-left: 0;
+        padding-top: 26px;
+      }
+
+      h1 {
+        font-size: 52px;
+      }
+
+      .role {
+        font-size: 31px;
+      }
+
+      .intro {
+        font-size: 24px;
+      }
+
+      .company {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <section class="card header">
+  <main class="page">
+    <header class="top">
       <div>
-        <h1>홍길동</h1>
-        <p class="title">Frontend Developer</p>
-        <p class="summary">
-          사용자 중심의 웹 경험을 설계하고 구현하는 4년 차 프론트엔드 개발자입니다.
-          성능 최적화와 협업 생산성 향상에 강점이 있습니다.
-        </p>
+        <h1>Soi Kim</h1>
+        <p class="role">Product Owner</p>
       </div>
-      <ul class="contact" aria-label="연락처 정보">
-        <li>📧 hong@example.com</li>
-        <li>📱 010-1234-5678</li>
-        <li>🌐 github.com/your-id</li>
-        <li>🔗 linkedin.com/in/your-id</li>
-        <li>📍 서울, 대한민국</li>
-      </ul>
+      <p class="intro">
+        Product Owner with 6 years of experience in IT/E-commerce platforms.
+        Focused on growing user base through product design/architecture, business,
+        technology, and UX analysis. Passionate about enhancing UX/UI and delivering
+        best-in-class user experiences.
+      </p>
+    </header>
+
+    <section class="content">
+      <aside class="left">
+        <section class="section">
+          <h2>INFO</h2>
+
+          <p class="label">Address</p>
+          <p class="value">300 Olympic-ro<br />Songpa-gu, Seoul, Korea</p>
+
+          <p class="label">Phone</p>
+          <p class="value">+82.10.1234.5678</p>
+
+          <p class="label">Email</p>
+          <p class="value">soi@wantedlab.com</p>
+
+          <p class="label">Web</p>
+          <p class="value">www.soi01portfolio.com</p>
+
+          <p class="label">LinkedIn</p>
+          <p class="value">@soisoi</p>
+        </section>
+
+        <section class="section">
+          <h2>SKILLS</h2>
+          <ul class="skills">
+            <li>Process analysis</li>
+            <li>Product integration & implementation</li>
+            <li>Stakeholder relationship management</li>
+            <li>Data Analysis (GA, Amplitude, Optimize)</li>
+            <li>Experience with SQL/SAS testing procedures</li>
+            <li>Strategic planning</li>
+            <li>Business process mapping</li>
+            <li>User research</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2>EDUCATION</h2>
+          <p class="value" style="color: var(--text); font-size: 16px; font-weight: 800; margin: 0 0 4px;">Korea University</p>
+          <p class="value" style="margin: 0 0 4px;">Mar 2008 - Feb 2015</p>
+          <p class="value" style="margin: 0;">B.A. in Business Administration & Psychology</p>
+        </section>
+      </aside>
+
+      <section class="right">
+        <section class="section">
+          <h2>WORK EXPERIENCE</h2>
+
+          <div class="company">
+            <p class="company-name">Wanted Lab <span class="position">Product Owner</span></p>
+            <p class="period">Sept 2018 - Present</p>
+          </div>
+
+          <p class="work-title">New Product Launches</p>
+          <p class="work-desc">
+            Gained 50,000+ new users by designing "Dorun," a new in-app voting/quiz feature.
+            Achieved 24% MAU growth in core product by implementing and delivering a new point
+            system, gaining insights through conducting user research, and data analysis.
+          </p>
+
+          <p class="work-title">Leading sales through user-centric product enhancements</p>
+          <p class="work-desc">
+            Generated 10% monthly sales growth in new client acquisitions through B2B product launch.
+          </p>
+
+          <p class="work-title">Adapting artificial intelligence (AI) technology to existing services</p>
+          <p class="work-desc">
+            Implemented domestic and foreign AI technologies to existing domestic recruitment
+            database for web/mobile. Tracked performance and adopted new features to improve
+            the overall service through continuous user experience analysis.
+          </p>
+
+          <div class="company" style="margin-top: 30px;">
+            <p class="company-name">Korea Big Company <span class="position">Product Owner</span></p>
+            <p class="period">Jan 2015 - Aug 2018</p>
+          </div>
+
+          <p class="work-title">Launched a new data-driven search service</p>
+          <p class="work-desc">
+            Supervised operation of the new search service and achieved strong retention and CTR.
+            Improved content structure and design maintenance for service continuity.
+          </p>
+
+          <p class="work-title">Revised page customer journey experience to improve purchase conversion</p>
+          <p class="work-desc">
+            Reduced bounce rate by 30%.
+          </p>
+
+          <p class="work-title">Created online e-commerce payment infrastructure</p>
+          <p class="work-desc">
+            Created UI/UX guide per user group and improved funnel conversion by 25%, by
+            minimizing the sign-up and payment steps.
+          </p>
+
+          <div class="divider"></div>
+
+          <h2>AWARDS & PROJECTS</h2>
+
+          <p class="award">
+            <strong>Startup Branding Strategy Training</strong> &nbsp;|&nbsp; Dec 2014<br />
+            Market research and business simulation workshop with developers and e-commerce
+            platform startup CEOs
+          </p>
+
+          <p class="award">
+            <strong>Young Entrepreneurs 1000 Project</strong> &nbsp;|&nbsp; Jun 2015<br />
+            Launched "My Note" service for working moms
+          </p>
+        </section>
+      </section>
     </section>
-
-    <section class="card">
-      <h2>경력</h2>
-
-      <article class="item">
-        <div class="item-head">
-          <p class="item-title">ABC Tech · Senior Frontend Developer</p>
-          <p class="item-meta">2023.03 - 현재</p>
-        </div>
-        <ul>
-          <li>React/TypeScript 기반 대시보드 리뉴얼로 핵심 페이지 로딩 시간 35% 개선</li>
-          <li>디자인 시스템 컴포넌트 표준화로 신규 기능 개발 리드타임 20% 단축</li>
-          <li>프론트엔드 코드 리뷰 가이드 도입 및 주니어 멘토링 진행</li>
-        </ul>
-      </article>
-
-      <article class="item">
-        <div class="item-head">
-          <p class="item-title">XYZ Studio · Frontend Developer</p>
-          <p class="item-meta">2021.01 - 2023.02</p>
-        </div>
-        <ul>
-          <li>고객사 웹사이트 10+건 구축 및 유지보수</li>
-          <li>접근성 개선 프로젝트 수행 (WCAG 준수율 향상)</li>
-          <li>테스트 자동화 도입으로 배포 후 이슈 발생률 감소</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="card">
-      <h2>학력</h2>
-
-      <article class="item">
-        <div class="item-head">
-          <p class="item-title">OO대학교 컴퓨터공학과</p>
-          <p class="item-meta">2016.03 - 2020.02</p>
-        </div>
-        <ul>
-          <li>학사 졸업</li>
-          <li>캡스톤 프로젝트 우수상 수상</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="card">
-      <h2>기술 스택</h2>
-      <div class="chips" aria-label="기술 스택 목록">
-        <span class="chip">JavaScript (ES6+)</span>
-        <span class="chip">TypeScript</span>
-        <span class="chip">React</span>
-        <span class="chip">Next.js</span>
-        <span class="chip">HTML/CSS</span>
-        <span class="chip">Tailwind CSS</span>
-        <span class="chip">Node.js</span>
-        <span class="chip">GitHub Actions</span>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>프로젝트</h2>
-
-      <article class="item">
-        <div class="item-head">
-          <p class="item-title">개인 포트폴리오 사이트</p>
-          <p class="item-meta">2025</p>
-        </div>
-        <ul>
-          <li>정적 사이트 생성 및 배포 자동화 구성</li>
-          <li>SEO 메타 태그와 구조화 데이터 적용</li>
-        </ul>
-      </article>
-
-      <article class="item">
-        <div class="item-head">
-          <p class="item-title">팀 협업 도구 프론트엔드</p>
-          <p class="item-meta">2024</p>
-        </div>
-        <ul>
-          <li>실시간 상태 반영 UI 구현 및 성능 최적화</li>
-          <li>사용자 행동 분석 지표 기반 화면 개선</li>
-        </ul>
-      </article>
-    </section>
-
-    <footer>
-      마지막 업데이트: 2026년 2월 23일
-    </footer>
   </main>
 </body>
 </html>
